@@ -64,6 +64,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DbManager.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="Game.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>

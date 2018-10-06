@@ -17,7 +17,7 @@ namespace WordQuiz
         private const string dbPath = "Data Source=db/database.s3db";
 
         /// <summary>
-        /// Fills a WordHolder with data of CSV file.
+        /// Fills a <see cref="WordHolder"/> with data of CSV file.
         /// </summary>
         public static WordHolder ImportCsvToWordHolder(string path, bool isFirstRowHeader)
         {
@@ -88,7 +88,7 @@ namespace WordQuiz
         }
 
         /// <summary>
-        /// Fills the WordHolder with all the data from database
+        /// Fills the <see cref="WordHolder"/> with all the data from database
         /// </summary>
         public static void FillWordHolder(WordHolder wordHolder)
         {
@@ -117,7 +117,7 @@ namespace WordQuiz
         }
 
         /// <summary>
-        /// Fills the UnitHolder with all the data from database
+        /// Fills the <see cref="UnitHolder"/> with all the data from database
         /// </summary>
         public static void FillUnitHolder(UnitHolder unitHolder)
         {

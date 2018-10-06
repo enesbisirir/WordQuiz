@@ -13,9 +13,6 @@ namespace WordQuiz
 {
     public partial class Main : Form
     {
-        WordHolder words = new WordHolder();
-        UnitHolder units = new UnitHolder();
-
         public Main()
         {
             InitializeComponent();
@@ -23,7 +20,7 @@ namespace WordQuiz
 
         private void Main_Load(object sender, EventArgs e)
         {
-
+            clbUnits.Populate(Game.Current.units);
         }
     }
 }
