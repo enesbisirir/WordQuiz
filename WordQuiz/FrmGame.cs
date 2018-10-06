@@ -11,16 +11,21 @@ using System.Data.SQLite;
 
 namespace WordQuiz
 {
-    public partial class Main : Form
+    public partial class FrmGame : Form
     {
-        public Main()
+        public FrmGame()
         {
             InitializeComponent();
         }
 
         private void Main_Load(object sender, EventArgs e)
         {
-            clbUnits.Populate(Game.Current.units);
+            ClbUnits.Populate(Game.Current.units);
+        }
+
+        private void FrmGame_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
