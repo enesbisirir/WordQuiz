@@ -10,18 +10,11 @@ namespace WordQuiz
     class Game
     {
         public static Game Current = new Game();
-        public WordHolder words = new WordHolder();
-        public UnitHolder units = new UnitHolder();
+        public WordHolder words;
 
         public Game()
         {
-            FillEverythingFromDatabase();
-        }
 
-        private void FillEverythingFromDatabase()
-        {
-            words.FillEverythingFromDatabase();
-            units.FillEverythingFromDatabase();
         }
     }
 }

@@ -10,13 +10,15 @@ namespace WordQuiz
     static class Extensions
     {
         /// <summary>
-        /// Populates <see cref="CheckedListBox"/> with given <see cref="UnitHolder"/>
+        /// Populates <see cref="CheckedListBox"/> with all units from database.
         /// </summary>
-        public static void Populate(this CheckedListBox clb, UnitHolder units)
+        public static void Populate(this CheckedListBox clb)
         {
+            UnitHolder units = new UnitHolder();
+            units.FillEverythingFromDatabase();
             foreach (Unit unit in units)
             {
-                clb.Items.Add(unit.Name);
+                clb.Items.Add(unit);
             }
         }
     }

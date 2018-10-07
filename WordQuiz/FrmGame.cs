@@ -17,13 +17,13 @@ namespace WordQuiz
         {
             InitializeComponent();
         }
-
-        private void Main_Load(object sender, EventArgs e)
+        
+        private void FrmGame_Load(object sender, EventArgs e)
         {
-            ClbUnits.Populate(Game.Current.units);
+            ClbUnits.Populate();
         }
 
-        private void FrmGame_Load(object sender, EventArgs e)
+        private void BtnStartGame_Click(object sender, EventArgs e)
         {
 
         }

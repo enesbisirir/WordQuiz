@@ -72,6 +72,7 @@
             this.BtnStartGame.TabIndex = 3;
             this.BtnStartGame.Text = "Start Game";
             this.BtnStartGame.UseVisualStyleBackColor = true;
+            this.BtnStartGame.Click += new System.EventHandler(this.BtnStartGame_Click);
             // 
             // LblEnglishOutput
             // 
@@ -82,7 +83,6 @@
             this.LblEnglishOutput.Size = new System.Drawing.Size(514, 42);
             this.LblEnglishOutput.TabIndex = 1;
             this.LblEnglishOutput.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.LblEnglishOutput.Visible = false;
             // 
             // TbSpanishInput
             // 
@@ -91,7 +91,6 @@
             this.TbSpanishInput.Name = "TbSpanishInput";
             this.TbSpanishInput.Size = new System.Drawing.Size(339, 32);
             this.TbSpanishInput.TabIndex = 4;
-            this.TbSpanishInput.Visible = false;
             // 
             // BtnCheck
             // 
@@ -102,7 +101,6 @@
             this.BtnCheck.TabIndex = 3;
             this.BtnCheck.Text = "Check";
             this.BtnCheck.UseVisualStyleBackColor = true;
-            this.BtnCheck.Visible = false;
             // 
             // FrmGame
             // 

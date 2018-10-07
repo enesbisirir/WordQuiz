@@ -16,5 +16,10 @@ namespace WordQuiz
             Name = name;
             UnitId = id;
         }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }
