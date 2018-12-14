@@ -16,10 +16,10 @@ namespace WordQuiz
             Name = name;
             UnitId = id;
         }
-
+        
         public override string ToString()
         {
-            return Name;
+            return string.Format("{0}. {1}", UnitId, Name);
         }
     }
 }

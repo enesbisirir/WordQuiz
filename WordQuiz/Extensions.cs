@@ -21,5 +21,31 @@ namespace WordQuiz
                 clb.Items.Add(unit);
             }
         }
+
+        /// <summary>
+        /// Returns a <see cref="UnitHolder"/> containing currently checked <see cref="Unit"/>s.
+        /// </summary>
+        public static UnitHolder CheckedUnits(this CheckedListBox clb)
+        {
+            UnitHolder units = new UnitHolder();
+            foreach (Unit unit in clb.CheckedItems)
+            {
+                units.Add(unit);
+            }
+            return units;
+        }
+
+        /// <summary>
+        /// Returns number of checked units.
+        /// </summary>
+        public static int GetCheckedUnitCount(this CheckedListBox clb)
+        {
+            int unitCount = 0;
+            foreach (Unit unit in clb.CheckedItems)
+            {
+                unitCount++;
+            }
+            return unitCount;
+        }
     }
 }

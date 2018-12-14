@@ -26,9 +26,14 @@ namespace WordQuiz
             DbManager.FillWordHolder(this);
         }
 
+        public void Fill(UnitHolder units)
+        {
+            DbManager.FillWordHolder(this, units);
+        }
+
         public void InsertIntoDatabase()
         {
-            foreach(Word word in words)
+            foreach (Word word in words)
             {
                 word.InsertIntoDatabase();
             }
@@ -42,6 +47,11 @@ namespace WordQuiz
         public void Add(string eng, string esp, int unt)
         {
             words.Add(new Word(eng, esp, unt));
+        }
+
+        public void Clear()
+        {
+            words.Clear();
         }
 
         public IEnumerator GetEnumerator()

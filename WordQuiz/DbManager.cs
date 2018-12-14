@@ -88,7 +88,7 @@ namespace WordQuiz
         }
 
         /// <summary>
-        /// Fills the <see cref="WordHolder"/> with all the data from database
+        /// Fills the <see cref="WordHolder"/> with all the data from database.
         /// </summary>
         public static void FillWordHolder(WordHolder wordHolder)
         {
@@ -117,7 +117,36 @@ namespace WordQuiz
         }
 
         /// <summary>
-        /// Fills the <see cref="UnitHolder"/> with all the data from database
+        /// Fills the <see cref="WordHolder"/> with words in the given Units.
+        /// </summary>
+        public static void FillWordHolder(WordHolder wordHolder, UnitHolder unitHolder)
+        {
+            string sql = DbManager.GenerateSql(unitHolder);
+            try
+            {
+                using (SQLiteConnection cnt = new SQLiteConnection(dbPath))
+                using (SQLiteCommand cmd = new SQLiteCommand(sql, cnt))
+                {
+                    cnt.Open();
+                    using (SQLiteDataReader rdr = cmd.ExecuteReader())
+                    {
+                        while (rdr.Read())
+                        {
+                            wordHolder.Add(rdr.GetString(1), rdr.GetString(2), rdr.GetInt32(3));
+                        }
+                    }
+                    cnt.Close();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Fills the <see cref="UnitHolder"/> with all the data from database.
         /// </summary>
         public static void FillUnitHolder(UnitHolder unitHolder)
         {
@@ -143,6 +172,28 @@ namespace WordQuiz
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        /// <summary>
+        /// Generates an SQL command to SELECT words in units given as <see cref="UnitHolder"/>.
+        /// </summary>
+        /// <returns>An SQL command as a <see cref="string"/>.</returns>
+        public static string GenerateSql(UnitHolder units)
+        {
+            string sql = "SELECT * FROM words WHERE wrd_unitId =  ";
+            sql += units.GetUnit(0).UnitId;
+            if (units.Count == 1)
+            {
+                return sql;
+            }
+            else
+            {
+                for (int i = 1; i < units.Count; i++)
+                {
+                    sql += " or " + units.GetUnit(i).UnitId;
+                }
+            }
+            return sql;
         }
 
         /// <summary>

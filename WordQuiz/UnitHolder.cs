@@ -9,8 +9,6 @@ namespace WordQuiz
 {
     class UnitHolder : IEnumerable
     {
-        private List<Unit> units;
-
         public UnitHolder()
         {
             units = new List<Unit>();
@@ -19,6 +17,16 @@ namespace WordQuiz
         public void FillEverythingFromDatabase()
         {
             DbManager.FillUnitHolder(this);
+        }
+
+        public Unit GetUnit(int i)
+        {
+            return units[i];
+        }
+
+        public void Clear()
+        {
+            units.Clear();
         }
 
         public void Add(Unit unit)
@@ -35,5 +43,8 @@ namespace WordQuiz
         {
             return units.GetEnumerator();
         }
+
+        private List<Unit> units;
+        public int Count { get { return units.Count; } }
     }
 }
