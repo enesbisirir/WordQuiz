@@ -9,8 +9,6 @@ namespace WordQuiz
 {
     class WordHolder : IEnumerable
     {
-        private List<Word> words;
-
         public WordHolder()
         {
             words = new List<Word>();
@@ -18,6 +16,13 @@ namespace WordQuiz
 
         public Word GetWord(int i)
         {
+            return words[i];
+        }
+
+        public Word GetRandomWord()
+        {
+            int maxValue = Game.SelectedWords.Count;
+            int i = Game.Random.Next(0, maxValue);
             return words[i];
         }
 
@@ -49,6 +54,16 @@ namespace WordQuiz
             words.Add(new Word(eng, esp, unt));
         }
 
+        public void Remove(int i)
+        {
+            words.RemoveAt(i);
+        }
+
+        public void Remove(Word word)
+        {
+            words.Remove(word);
+        }
+
         public void Clear()
         {
             words.Clear();
@@ -58,5 +73,8 @@ namespace WordQuiz
         {
             return words.GetEnumerator();
         }
+
+        private List<Word> words;
+        public int Count { get { return words.Count; } }
     }
 }

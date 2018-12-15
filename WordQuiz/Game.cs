@@ -14,14 +14,14 @@ namespace WordQuiz
         /// </summary>
         public static void UpdateGameHolders(UnitHolder units)
         {
-            UpdateCheckedUnits(units);
+            UpdateSelectedUnits(units);
             UpdateSelectedWords();
         }
 
         /// <summary>
         /// Clears <see cref="selectedUnits"/> and sets it to given <see cref="UnitHolder"/>
         /// </summary>
-        public static void UpdateCheckedUnits(UnitHolder units)
+        public static void UpdateSelectedUnits(UnitHolder units)
         {
             if (Current.selectedUnits != null)
             {
@@ -41,12 +41,33 @@ namespace WordQuiz
             }
             Current.selectedWords.Fill(Current.selectedUnits);
         }
+
+        /// <summary>
+        /// Sets the word that will be asked next.
+        /// </summary>
+        public static void SetNextWord()
+        {
+            if (Current.selectedWords.Count > 0)
+            {
+                Current.currentWord = Current.selectedWords.GetRandomWord();
+            }
+        }
         
+        /// <summary>
+        /// Removes the already asked word from the selectedWords list.
+        /// </summary>
+        public static void RemoveAskedWord()
+        {
+            Current.selectedWords.Remove(Current.currentWord);
+        }
 
         private static Game Current = new Game();
+        public static Random Random = new Random();
         private WordHolder selectedWords = new WordHolder();
         private UnitHolder selectedUnits = new UnitHolder();
+        private Word currentWord;
         public static WordHolder SelectedWords { get { return Current.selectedWords; } }
         public static UnitHolder SelectedUnits { get { return Current.selectedUnits; } }
+        public static Word CurrentWord { get { return Current.currentWord; } }
     }
 }

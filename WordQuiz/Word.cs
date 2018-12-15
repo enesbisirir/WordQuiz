@@ -25,7 +25,7 @@ namespace WordQuiz
             DbManager.InsertWord(this);
         }
 
-        public string TestString()
+        public override string ToString()
         {
             return string.Format("Eng: {0}, Esp: {1}, Unit: {2}", English, Spanish, UnitId.ToString());
         }

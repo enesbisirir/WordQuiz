@@ -29,17 +29,58 @@ namespace WordQuiz
             if (ClbUnits.GetCheckedUnitCount() >= 1)
             {
                 Game.UpdateGameHolders(ClbUnits.CheckedUnits());
+                Game.SetNextWord();
             }
             else
             {
                 MessageBox.Show("Please check at least one unit to start game.");
             }
 
+            ShowCurrentWord();
+
             // TEST if SelectedUnits are updated
             MessageBox.Show(Game.SelectedUnits.GetUnit(0).ToString());
 
             // TEST if SelectedWords are updated
-            MessageBox.Show(Game.SelectedWords.GetWord(0).TestString());
+            MessageBox.Show(Game.SelectedWords.GetRandomWord().ToString());
+        }
+
+        private void BtnCheck_Click(object sender, EventArgs e)
+        {
+            if (IsAnswerCorrect())
+            {
+                MessageBox.Show("Correct!");
+            }
+            else
+            {
+                MessageBox.Show("Wrong! :(");
+            }
+            ClearInputTextBox();
+            Game.RemoveAskedWord();
+            Game.SetNextWord();
+            ShowCurrentWord();
+        }
+
+        private void ClearInputTextBox()
+        {
+            TbSpanishInput.Text = "";
+        }
+
+        private void ShowCurrentWord()
+        {
+            LblEnglishOutput.Text = Game.CurrentWord.English;
+        }
+
+        private bool IsAnswerCorrect()
+        {
+            if (Game.CurrentWord.Spanish == TbSpanishInput.Text)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

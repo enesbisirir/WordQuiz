@@ -101,6 +101,7 @@
             this.BtnCheck.TabIndex = 3;
             this.BtnCheck.Text = "Check";
             this.BtnCheck.UseVisualStyleBackColor = true;
+            this.BtnCheck.Click += new System.EventHandler(this.BtnCheck_Click);
             // 
             // FrmGame
             // 
